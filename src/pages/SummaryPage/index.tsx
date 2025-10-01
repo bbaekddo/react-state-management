@@ -1,15 +1,25 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 
 const SummaryPage = () => {
+	// 상태 관리
 	const checkboxId = useId();
+	const [checked, setChecked] = useState<boolean>(false);
+
 	return (
 		<div>
-			<form action="">
-				<label htmlFor={checkboxId}>
-					I confirm that I have read the terms and conditions
-				</label>
-				<input type="checkbox" checked={false} id={checkboxId} />
+			<form>
+				<label htmlFor={checkboxId}>주문하려는 것을 확인하셨나요?</label>
+				<input
+					type="checkbox"
+					checked={checked}
+					id={checkboxId}
+					onChange={(e) => setChecked(e.target.checked)}
+				/>
 			</form>
+			<br />
+			<button type="submit" disabled={!checked}>
+				주문 확인
+			</button>
 		</div>
 	);
 };
