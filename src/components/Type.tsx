@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ErrorBanner from "./ErrorBanner";
 import Option from "./Option";
 import Product from "./Product";
 
@@ -24,6 +25,10 @@ const Type = ({ orderType }: { orderType: string }) => {
 
 		loadItems(orderType);
 	}, [orderType]);
+
+	if (error) {
+		return <ErrorBanner message="에러가 발생했습니다." />;
+	}
 
 	return (
 		<div style={{ textAlign: "left" }}>
