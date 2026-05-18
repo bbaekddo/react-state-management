@@ -18,6 +18,7 @@ type OrderContextValue = {
 		newItemCount: number,
 		orderType: OrderType,
 	) => void;
+	resetItemCount: () => void;
 };
 type OrderType = "products" | "options";
 
@@ -26,6 +27,7 @@ export const OrderContext = createContext<OrderContextValue>({
 	orderCount: { products: new Map(), options: new Map() },
 	totalAmount: { products: 0, options: 0, total: 0 },
 	updateItemCount: () => {},
+	resetItemCount: () => {},
 });
 
 // 합계 산출
@@ -77,7 +79,15 @@ function OrderContextProvider({ children }: { children: React.ReactNode }) {
 			});
 		}
 
-		return { orderCount, totalAmount, updateItemCount };
+		// 상품 옵션 개수 초기화
+		function resetItemCount() {
+			setOrderCount({
+				products: new Map(),
+				options: new Map(),
+			});
+		}
+
+		return { orderCount, totalAmount, updateItemCount, resetItemCount };
 	}, [orderCount, totalAmount]);
 
 	// 합계 렌더링
