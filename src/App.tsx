@@ -1,20 +1,19 @@
 import "./App.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import CompletePage from "./pages/CompletePage";
 import OrderPage from "./pages/OrderPage";
 import SummaryPage from "./pages/SummaryPage";
 
 function App(): React.ReactElement {
+	// 상태 관리
+	const [step, setStep] = useState(0);
+
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/summary" element={<SummaryPage />} />
-				<Route path="/order" element={<OrderPage />} />
-				<Route path="/complete" element={<CompletePage />} />
-				{/* 기본 경로 리다이렉션 처리 */}
-				<Route path="*" element={<Navigate to="/summary" replace />} />
-			</Routes>
-		</BrowserRouter>
+		<div>
+			{step === 0 && <OrderPage setStep={setStep} />}
+			{step === 1 && <SummaryPage setStep={setStep} />}
+			{step === 2 && <CompletePage setStep={setStep} />}
+		</div>
 	);
 }
 
