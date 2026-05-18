@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 
-const SummaryPage = () => {
+const SummaryPage = ({ setStep }: { setStep: (step: number) => void }) => {
 	// 상태 관리
 	const checkboxId = useId();
 	const [checked, setChecked] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const SummaryPage = () => {
 				/>
 			</form>
 			<br />
-			<button type="submit" disabled={!checked}>
+			<button type="submit" disabled={!checked} onClick={() => setStep(1)}>
 				주문 확인
 			</button>
 		</div>
