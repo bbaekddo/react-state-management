@@ -20,6 +20,9 @@ importers:
       react-router-dom:
         specifier: ^7.9.3
         version: 7.9.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      redux:
+        specifier: ^5.0.1
+        version: 5.0.1
     devDependencies:
       '@types/react':
         specifier: ^19.1.13
@@ -677,6 +680,9 @@ packages:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
+  redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
+
   rollup@4.52.3:
     resolution: {integrity: sha512-RIDh866U8agLgiIcdpB+COKnlCreHJLfIhWC3LVflku5YHfpnsIKigRZeFfMfCc4dVcqNVfQQ5gO/afOck064A==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -1284,6 +1290,8 @@ snapshots:
       react-dom: 19.1.1(react@19.1.1)
 
   react@19.1.1: {}
+
+  redux@5.0.1: {}
 
   rollup@4.52.3:
     dependencies:
