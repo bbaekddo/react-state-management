@@ -1,5 +1,6 @@
 import "./App.css";
 import * as React from "react";
+import {useState} from "react";
 
 type AppProps = {
 	value: any;
@@ -8,6 +9,18 @@ type AppProps = {
 }
 
 function App({ value, onIncrement, onDecrement }: AppProps): React.ReactElement {
+	// 상태 관리
+	const [todoValue, setTodoValue] = useState("");
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setTodoValue(e.target.value);
+	};
+
+	const addTodo = (e:React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setTodoValue("");
+	}
+
 	return (
 		<div>
 			Clicked: {value} times
@@ -17,6 +30,9 @@ function App({ value, onIncrement, onDecrement }: AppProps): React.ReactElement 
 			<button onClick={onDecrement}>
 				-
 			</button>
+			<form onSubmit={}>
+				<input type="text" value={}/>
+			</form>
 		</div>
 	);
 }

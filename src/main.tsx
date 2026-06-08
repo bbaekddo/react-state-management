@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { createStore } from "redux";
 import rootReducer from "./reducers";
+import {Provider} from "react-redux";
 
 const rootElement = document.getElementById("root");
 const store = createStore(rootReducer);
@@ -18,16 +19,16 @@ if (rootElement) {
 	const render = () => {
 		root.render(
 			<StrictMode>
-				<App
-					value={store.getState().counter}
-					onIncrement={() => store.dispatch({ type: "increment" })}
-					onDecrement={() => store.dispatch({ type: "decrement" })}
-				/>
+				<Provider store={store}>
+					<App
+						value={store.getState().counter}
+						onIncrement={() => store.dispatch({ type: "increment" })}
+						onDecrement={() => store.dispatch({ type: "decrement" })}
+					/>
+				</Provider>
 			</StrictMode>,
 		);
 	};
-
-	console.log(store.getState());
 
 	store.subscribe(render);
 	render();
