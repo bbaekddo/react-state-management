@@ -1,14 +1,20 @@
 import "./App.css";
 import * as React from "react";
 
-function App(): React.ReactElement {
+type AppProps = {
+	value: any;
+	onIncrement: () => void;
+	onDecrement: () => void;
+}
+
+function App({ value, onIncrement, onDecrement }: AppProps): React.ReactElement {
 	return (
 		<div>
-			Clicked:  times
-			<button>
+			Clicked: {value} times
+			<button onClick={onIncrement}>
 				+
 			</button>
-			<button>
+			<button onClick={onDecrement}>
 				-
 			</button>
 		</div>
