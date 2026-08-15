@@ -3,17 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-type AppProps = {
-  value: any;
-  onIncrement: () => void;
-  onDecrement: () => void;
-};
-
-function App({
-  value,
-  onIncrement,
-  onDecrement,
-}: AppProps): React.ReactElement {
+function App(): React.ReactElement {
   const counter = useSelector((state: any) => state.counter);
   const todos: string[] = useSelector((state: any) => state.todos);
   const dispatch = useDispatch();
@@ -22,6 +12,14 @@ function App({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoValue(e.target.value);
+  };
+
+  const handleIncrement = () => {
+    dispatch({ type: "increment" });
+  };
+
+  const handleDecrement = () => {
+    dispatch({ type: "decrement" });
   };
 
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,8 +31,8 @@ function App({
   return (
     <div>
       Clicked: {counter} times
-      <button onClick={onIncrement}>+</button>
-      <button onClick={onDecrement}>-</button>
+      <button onClick={handleIncrement}>+</button>
+      <button onClick={handleDecrement}>-</button>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>{todo}</li>

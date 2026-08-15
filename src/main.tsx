@@ -17,11 +17,7 @@ if (rootElement) {
     root.render(
       <StrictMode>
         <Provider store={store}>
-          <App
-            value={store.getState().counter}
-            onIncrement={() => store.dispatch({ type: "increment" })}
-            onDecrement={() => store.dispatch({ type: "decrement" })}
-          />
+          <App />
         </Provider>
       </StrictMode>,
     );
