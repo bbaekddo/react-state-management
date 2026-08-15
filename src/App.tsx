@@ -1,11 +1,13 @@
 import "./App.css";
-import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import type { Post } from "./reducers/posts";
+import { fetchPosts } from "./actions/posts";
 
 function App(): React.ReactElement {
   const counter = useSelector((state: any) => state.counter);
   const todos: string[] = useSelector((state: any) => state.todos);
+  const posts: Post[] = useSelector((state: any) => state.posts);
   const dispatch = useDispatch();
 
   const [todoValue, setTodoValue] = useState("");
@@ -28,6 +30,10 @@ function App(): React.ReactElement {
     setTodoValue("");
   };
 
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
   return (
     <div>
       Clicked: {counter} times
@@ -42,6 +48,11 @@ function App(): React.ReactElement {
         <input type="text" value={todoValue} onChange={handleChange} />
         <button type="submit">Add</button>
       </form>
+      <ul>
+        {posts.slice(0, 10).map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
