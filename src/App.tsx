@@ -30,8 +30,9 @@ function App({ value, onIncrement, onDecrement }: AppProps): React.ReactElement 
 			<button onClick={onDecrement}>
 				-
 			</button>
-			<form onSubmit={}>
-				<input type="text" value={}/>
+			<form onSubmit={addTodo}>
+				<input type="text" value={todoValue} onChange={handleChange}/>
+				<button type="submit">Add</button>
 			</form>
 		</div>
 	);
